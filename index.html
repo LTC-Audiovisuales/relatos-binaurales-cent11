@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06090d">
+  <title>Relatos Binaurales · Semana de la Voz</title>
+  <meta name="description" content="Muestra interactiva de relatos sonoros binaurales de Producción de Sonido y Música III · CENT N.º 11.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <section class="welcome" id="welcome">
+    <div class="welcome__glow"></div>
+    <div class="welcome__content">
+<p class="eyebrow">SEMANA DE LA VOZ</p>
+      <h1>Relatos<br><span>Binaurales</span></h1>
+      <p class="welcome__desc">
+        Historias construidas para habitar el espacio sonoro.
+      </p>
+
+      <div class="headphones">
+        <div class="headphones__icon" aria-hidden="true">
+          <span class="ear ear--left"></span>
+          <span class="band"></span>
+          <span class="ear ear--right"></span>
+        </div>
+        <div>
+          <strong>Usá auriculares</strong>
+          <span>La espacialización binaural está diseñada para escucha estéreo con auriculares.</span>
+        </div>
+      </div>
+
+      <button class="enter-button" id="enterButton">
+        <span>ENTRAR A LA MUESTRA</span>
+        <span class="enter-button__arrow">→</span>
+      </button>
+
+      <div class="academic-credit academic-credit--welcome">
+        <span>TRABAJOS PRODUCIDOS EN EL MARCO DE</span>
+        <strong>Producción de Sonido y Música III</strong>
+        <small>Tecnicatura Superior en Diseño, Imagen y Sonido · CENT N.º 11</small>
+      </div>
+    </div>
+  </section>
+
+  <main class="site" id="site" aria-hidden="true">
+    <header class="topbar">
+      <button class="brand" id="homeButton" aria-label="Volver a la galería">
+        <span class="brand__mark">◉</span>
+        <span class="brand__academic">
+          <strong>RELATOS BINAURALES</strong>
+          <small>Producción de Sonido y Música III</small>
+        </span>
+      </button>
+      <div class="topbar__right">
+        <div class="active-author" id="activeAuthor" hidden></div>
+        <div class="headphone-reminder">
+          <span>🎧</span>
+          <span>Experiencia con auriculares</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="gallery-view" id="galleryView">
+      <div class="hero">
+        <p class="eyebrow">TRABAJOS PRODUCIDOS EN EL MARCO DE PRODUCCIÓN DE SONIDO Y MÚSICA III</p>
+        <h2>Elegí una historia.<br><span>Cerrá los ojos. Escuchá.</span></h2>
+        <p>
+          Cada relato propone un recorrido narrativo construido mediante voz,
+          ambientes, diseño sonoro y espacialización binaural.
+        </p>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+
+      <footer class="footer">
+        <div class="footer__logo footer__logo--left">
+          <img src="assets/logos/cent11.png" alt="CENT N.º 11 Ciudad de Ushuaia">
+        </div>
+
+        <div class="footer__center">
+          <strong>Producción de Sonido y Música III</strong>
+          <span>Tecnicatura Superior en Diseño, Imagen y Sonido</span>
+          <span>Trabajos producidos en el marco de la materia · Exhibición Semana de la Voz</span>
+        </div>
+
+        <div class="footer__logo footer__logo--right">
+          <img src="assets/logos/semana-voz.png" alt="Semana de la Voz">
+        </div>
+      </footer>
+    </section>
+
+    <section class="story-view" id="storyView" hidden>
+      <div class="academic-strip">
+        <span>Producción de Sonido y Música III</span>
+        <small>Tecnicatura Superior en Diseño, Imagen y Sonido</small>
+      </div>
+      <div class="story-bg" id="storyBg" aria-hidden="true"></div>
+      <div class="story-vignette" aria-hidden="true"></div>
+
+      <button class="back-button" id="backButton">
+        <span>←</span> VOLVER A LOS RELATOS
+      </button>
+
+      <div class="story-layout">
+        <div class="story-cover-wrap">
+          <img class="story-cover" id="storyCover" alt="">
+          <div class="story-cover__shine"></div>
+        </div>
+
+        <article class="story-info">
+          <p class="eyebrow" id="storyKicker">RELATO BINAURAL · PRODUCCIÓN DE SONIDO Y MÚSICA III</p>
+          <h2 id="storyTitle"></h2>
+          <p class="story-author"><span>AUTOR/A</span> <strong id="storyAuthor"></strong></p>
+
+          <div class="story-divider"></div>
+
+          <p class="story-synopsis" id="storySynopsis"></p>
+
+          <div class="player" id="player">
+            <button class="play-button" id="playButton" aria-label="Reproducir">
+              <span class="play-icon" id="playIcon">▶</span>
+              <span class="pulse pulse--1"></span>
+              <span class="pulse pulse--2"></span>
+            </button>
+
+            <div class="player__main">
+              <div class="player__labels">
+                <span id="currentTime">00:00</span>
+                <span class="player__status" id="playerStatus">LISTO PARA ESCUCHAR</span>
+                <span id="duration">00:00</span>
+              </div>
+              <input id="seek" class="seek" type="range" min="0" max="1000" value="0" aria-label="Posición del audio">
+              <div class="player__bottom">
+                <div class="channels" aria-hidden="true">
+                  <span>L</span>
+                  <div class="channels__line"></div>
+                  <span class="channels__center">BINAURAL</span>
+                  <div class="channels__line"></div>
+                  <span>R</span>
+                </div>
+
+                <div class="volume-control">
+                  <button class="volume-button" id="volumeButton" aria-label="Silenciar">VOL</button>
+                  <input id="volume" class="volume" type="range" min="0" max="100" value="85" aria-label="Volumen">
+                  <span class="volume-value" id="volumeValue">85%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <audio id="audio" preload="metadata"></audio>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
