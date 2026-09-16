@@ -197,7 +197,6 @@ function aplicarDiseno_(sheet) {
     SpreadsheetApp.newConditionalFormatRule()
       .whenTextEqualTo('Sí')
       .setBackground('#FEF3C7')
-      .setFontWeight('bold')
       .setRanges([favoriteRange])
       .build()
   ]);
