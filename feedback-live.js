@@ -3,7 +3,16 @@
   const DRAFT_KEY = "relatos-binaurales-feedback-draft-v1";
   const SESSION_KEY = "relatos-binaurales-session-v1";
 
+  function syncOpinionButton() {
+    const button = document.getElementById("feedbackNavButton");
+    if (!button) return;
+    button.textContent = "DEJANOS TU OPINIÓN";
+    button.setAttribute("aria-label", "Dejanos tu opinión sobre los relatos");
+  }
+
   function syncLiveUI() {
+    syncOpinionButton();
+
     const form = document.getElementById("feedbackForm");
     if (!form) return;
 
