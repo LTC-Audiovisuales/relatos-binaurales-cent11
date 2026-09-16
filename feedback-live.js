@@ -8,15 +8,14 @@
     if (!form) return;
 
     const note = document.getElementById("feedbackModeNote");
-    if (note) note.textContent = "Las respuestas se enviarán de forma anónima y quedarán registradas para la muestra.";
+    const liveText = "Las respuestas se enviarán de forma anónima y quedarán registradas para la muestra.";
+    if (note && note.textContent !== liveText) note.textContent = liveText;
 
     const submit = form.querySelector('button[type="submit"]');
-    if (submit && !submit.disabled) submit.textContent = "ENVIAR DEVOLUCIONES";
+    if (submit && !submit.disabled && submit.textContent !== "ENVIAR DEVOLUCIONES") {
+      submit.textContent = "ENVIAR DEVOLUCIONES";
+    }
   }
-
-  const observer = new MutationObserver(syncLiveUI);
-  observer.observe(document.body, { childList: true, subtree: true });
-  syncLiveUI();
 
   function getSessionId() {
     const urlSession = new URLSearchParams(location.search).get("s");
@@ -84,11 +83,17 @@
     area.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  // Actualiza la interfaz sólo cuando se crea el formulario, evitando el bucle de MutationObserver.
+  document.addEventListener("click", event => {
+    const button = event.target.closest("#writeFeedbackButton");
+    if (!button) return;
+    setTimeout(syncLiveUI, 0);
+  });
+
   document.addEventListener("submit", async event => {
     const form = event.target;
     if (!(form instanceof HTMLFormElement) || form.id !== "feedbackForm") return;
 
-    // Capturamos el envío antes que el manejador de la versión borrador.
     event.preventDefault();
     event.stopImmediatePropagation();
 
@@ -123,4 +128,6 @@
       }
     }
   }, true);
+
+  syncLiveUI();
 })();
