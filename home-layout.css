@@ -1,197 +1,254 @@
-/* Home: composición editorial + wordmark estable */
+/* Home centrado, con jerarquía clara y wordmark estable */
 
-.welcome__title {
-  margin: 0;
-  line-height: 1 !important;
-  letter-spacing: 0 !important;
+.welcome {
+  position: fixed;
+  inset: 0;
+  display: grid !important;
+  place-items: center !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(28px, 5vh, 56px) 22px clamp(118px, 15vh, 156px) !important;
 }
 
-/* RELATOS sigue siendo texto; BINAURALES es un SVG de contornos fijos para que
-   no cambie su dibujo al variar ancho, orientación o dispositivo. */
+.welcome__content {
+  position: relative;
+  width: min(760px, 92vw) !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.welcome__title {
+  width: 100%;
+  margin: 0 auto !important;
+  font-size: clamp(68px, 8.7vw, 118px) !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-align: center !important;
+}
+
+/* RELATOS queda tipográfico; BINAURALES es SVG para conservar siempre su forma. */
 .welcome__relatos {
   display: block !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   color: var(--text) !important;
   font-size: 1em !important;
   font-weight: 900 !important;
-  line-height: .88 !important;
+  line-height: .86 !important;
   letter-spacing: -.065em !important;
+  text-align: center !important;
   opacity: 1 !important;
   -webkit-text-stroke: 0 !important;
-  text-shadow: 0 2px 18px rgba(0,0,0,.22) !important;
+  text-shadow: 0 2px 18px rgba(0,0,0,.25) !important;
 }
 
 .welcome__binaurales-mark {
   display: block;
-  width: min(100%, 650px);
+  width: min(92%, 690px);
   height: auto;
-  margin: 12px 0 0;
+  margin: 14px auto 0;
   object-fit: contain;
-  object-position: left center;
-  opacity: .9;
-  filter: drop-shadow(0 2px 12px rgba(0,0,0,.28));
+  object-position: center;
+  opacity: .88;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.3));
 }
 
-.academic-credit--welcome {
-  width: min(940px, calc(100vw - 36px));
-  margin-top: 26px !important;
-  color: rgba(255,255,255,.52);
+.welcome__desc {
+  max-width: 650px !important;
+  margin: 28px auto 26px !important;
   text-align: center !important;
+}
+
+.headphones {
+  width: min(560px, 100%) !important;
+  margin: 0 auto 26px !important;
+  text-align: left !important;
+}
+
+.enter-button {
+  display: inline-flex !important;
+  min-width: min(360px, 100%);
+  margin: 0 auto !important;
+}
+
+/* Créditos como cierre horizontal del Home, sin competir con el contenido principal. */
+.academic-credit--welcome {
+  position: fixed !important;
+  z-index: 130;
+  left: 50% !important;
+  bottom: max(24px, env(safe-area-inset-bottom)) !important;
+  transform: translateX(-50%) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: min(920px, calc(100vw - 48px)) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: rgba(255,255,255,.48);
+  text-align: left !important;
   text-shadow: 0 1px 10px rgba(0,0,0,.42);
 }
 
-.home-credit__line {
-  margin: 0 auto;
-  white-space: normal;
-  text-wrap: balance;
+.home-credit__group {
+  min-width: 0;
+  padding: 0 18px;
 }
 
-.home-credit__line--primary {
+.home-credit__group + .home-credit__group {
+  border-left: 1px solid rgba(255,255,255,.22);
+}
+
+.home-credit__label,
+.home-credit__subject,
+.home-credit__meta {
+  margin: 0;
+  white-space: normal;
+}
+
+.home-credit__label {
   color: rgba(255,255,255,.58);
-  font-size: 10px;
-  line-height: 1.45;
-  letter-spacing: .055em;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: .06em;
   text-transform: uppercase;
 }
 
-.home-credit__line--primary strong {
-  color: rgba(255,255,255,.86);
+.home-credit__subject {
+  color: rgba(255,255,255,.9);
+  font-size: 12px;
   font-weight: 800;
+  line-height: 1.35;
 }
 
-.home-credit__line--secondary {
-  margin-top: 5px;
-  color: rgba(255,255,255,.42);
+.home-credit__meta {
+  margin-top: 4px;
+  color: rgba(255,255,255,.44);
   font-size: 10px;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
-@media (min-width: 761px) {
-  .welcome {
-    place-items: center start !important;
-    padding-left: clamp(48px, 9vw, 150px) !important;
-    padding-right: clamp(40px, 7vw, 120px) !important;
-  }
-
-  .welcome__content {
-    width: min(690px, 58vw) !important;
-    margin: 0 !important;
-    text-align: left !important;
-  }
-
-  .welcome__title,
-  .welcome__desc,
-  .headphones {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    text-align: left !important;
-  }
-
-  .welcome__desc {
-    max-width: 620px !important;
-    margin-top: 28px !important;
-    margin-bottom: 28px !important;
-  }
-
-  .headphones {
-    width: min(560px, 100%) !important;
-  }
-
-  .enter-button {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* El crédito funciona como cierre del Home, centrado respecto de la pantalla. */
-  .academic-credit--welcome {
-    position: relative;
-    left: calc((100vw - min(690px, 58vw)) / 2 - clamp(48px, 9vw, 150px));
-    transform: translateX(-50%);
-    margin-top: 28px !important;
-  }
-}
-
-/* Tablet horizontal: conservar composición editorial y wordmark sin deformar. */
+/* Tablet horizontal: misma jerarquía, algo más compacta. */
 @media (min-width: 761px) and (max-width: 1180px) and (orientation: landscape) {
   .welcome {
-    padding-left: clamp(36px, 6vw, 72px) !important;
-    padding-right: 36px !important;
+    padding-top: 30px !important;
+    padding-bottom: 118px !important;
   }
 
   .welcome__content {
-    width: min(640px, 66vw) !important;
+    width: min(700px, 80vw) !important;
   }
 
   .welcome__title {
-    font-size: clamp(62px, 8.2vw, 92px) !important;
+    font-size: clamp(62px, 8vw, 92px) !important;
   }
 
   .welcome__binaurales-mark {
-    width: min(100%, 590px);
+    width: min(90%, 610px);
+  }
+
+  .welcome__desc {
+    margin-top: 22px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .headphones {
+    margin-bottom: 22px !important;
   }
 
   .academic-credit--welcome {
-    left: calc((100vw - min(640px, 66vw)) / 2 - clamp(36px, 6vw, 72px));
+    width: min(850px, calc(100vw - 54px)) !important;
   }
 }
 
+/* Mobile: misma jerarquía, apilada y segura. */
 @media (max-width: 760px) {
+  .welcome {
+    padding: max(68px, calc(env(safe-area-inset-top) + 52px)) 16px 132px !important;
+    overflow-y: auto;
+  }
+
   .welcome__content {
     width: min(100%, calc(100vw - 32px)) !important;
   }
 
   .welcome__title {
-    width: 100%;
     font-size: clamp(46px, 14vw, 68px) !important;
-    text-align: center !important;
   }
 
   .welcome__relatos {
-    text-align: center;
     letter-spacing: -.055em !important;
   }
 
   .welcome__binaurales-mark {
-    width: min(100%, 540px);
-    margin: 10px auto 0;
-    object-position: center;
+    width: min(94%, 540px);
+    margin-top: 10px;
+  }
+
+  .welcome__desc {
+    max-width: 92% !important;
+    margin: 24px auto 24px !important;
+  }
+
+  .headphones {
+    margin-bottom: 24px !important;
   }
 
   .academic-credit--welcome {
-    width: min(100%, calc(100vw - 34px));
-    margin: 24px auto 0 !important;
-    padding: 0 2px;
+    position: absolute !important;
+    bottom: max(20px, env(safe-area-inset-bottom)) !important;
+    display: block !important;
+    width: min(100%, calc(100vw - 40px)) !important;
+    text-align: center !important;
   }
 
-  .home-credit__line--primary {
-    font-size: 9px;
-    line-height: 1.5;
-    letter-spacing: .035em;
+  .home-credit__group {
+    padding: 0 !important;
+    text-align: center;
   }
 
-  .home-credit__line--secondary {
+  .home-credit__group + .home-credit__group {
     margin-top: 4px;
+    border-left: 0;
+  }
+
+  .home-credit__label {
+    display: none;
+  }
+
+  .home-credit__subject {
+    font-size: 10px;
+  }
+
+  .home-credit__meta {
+    margin-top: 3px;
     font-size: 9px;
-    line-height: 1.5;
+    line-height: 1.4;
   }
 }
 
 @media (max-width: 460px) {
+  .welcome {
+    padding-bottom: 126px !important;
+  }
+
   .welcome__title {
     font-size: clamp(42px, 13.5vw, 56px) !important;
   }
 
   .welcome__binaurales-mark {
-    width: 96%;
+    width: 94%;
     margin-top: 8px;
   }
 
-  .academic-credit--welcome {
-    margin-top: 20px !important;
+  .welcome__desc {
+    margin-top: 22px !important;
+    margin-bottom: 22px !important;
   }
 
-  .home-credit__line--primary,
-  .home-credit__line--secondary {
+  .home-credit__subject {
+    font-size: 9.5px;
+  }
+
+  .home-credit__meta {
     font-size: 8.5px;
   }
 }
