@@ -1,4 +1,9 @@
 
+const enhancementStyles = document.createElement("link");
+enhancementStyles.rel = "stylesheet";
+enhancementStyles.href = "exhibition-enhancements.css";
+document.head.appendChild(enhancementStyles);
+
 const relatos = [
   {
     id: "sos-zom",
@@ -294,8 +299,92 @@ volumeButton.addEventListener("click", () => {
 });
 
 audio.addEventListener("volumechange", updateVolumeUI);
+
+function getFullscreenElement() {
+  return document.fullscreenElement || document.webkitFullscreenElement || null;
+}
+
+function canFullscreen() {
+  const root = document.documentElement;
+  return Boolean(root.requestFullscreen || root.webkitRequestFullscreen);
+}
+
+async function requestAppFullscreen() {
+  const root = document.documentElement;
+  try {
+    if (getFullscreenElement()) {
+      if (document.exitFullscreen) await document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      return;
+    }
+
+    if (root.requestFullscreen) {
+      await root.requestFullscreen({ navigationUI: "hide" });
+    } else if (root.webkitRequestFullscreen) {
+      root.webkitRequestFullscreen();
+    }
+  } catch (_) {}
+}
+
+function createFullscreenButton(extraClass = "") {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = `fullscreen-button ${extraClass}`.trim();
+  button.innerHTML = '<span class="fullscreen-button__icon">⛶</span><span class="fullscreen-button__label">PANTALLA COMPLETA</span>';
+  button.setAttribute("aria-label", "Activar pantalla completa");
+  button.addEventListener("click", requestAppFullscreen);
+  if (canFullscreen()) button.classList.add("is-supported");
+  return button;
+}
+
+function updateFullscreenButtons() {
+  const active = Boolean(getFullscreenElement());
+  document.querySelectorAll(".fullscreen-button").forEach(button => {
+    const label = button.querySelector(".fullscreen-button__label");
+    if (label) label.textContent = active ? "SALIR DE PANTALLA COMPLETA" : "PANTALLA COMPLETA";
+    button.setAttribute("aria-label", active ? "Salir de pantalla completa" : "Activar pantalla completa");
+    button.style.display = active ? "none" : "";
+  });
+}
+
+function installExhibitionUI() {
+  const welcomeCredit = document.querySelector(".academic-credit--welcome");
+  if (welcomeCredit && !welcomeCredit.querySelector(".professor-credit")) {
+    const professor = document.createElement("small");
+    professor.className = "professor-credit";
+    professor.textContent = "Profesor · Luciano Tambella Caruso";
+    welcomeCredit.appendChild(professor);
+  }
+
+  const footerCenter = document.querySelector(".footer__center");
+  if (footerCenter && !footerCenter.querySelector(".footer__professor")) {
+    const professor = document.createElement("span");
+    professor.className = "footer__professor";
+    professor.textContent = "Profesor · Luciano Tambella Caruso";
+    footerCenter.appendChild(professor);
+  }
+
+  const welcomeActionsAnchor = document.querySelector(".academic-credit--welcome");
+  if (welcomeActionsAnchor && !document.querySelector(".fullscreen-button--welcome")) {
+    const fullscreenWelcome = createFullscreenButton("fullscreen-button--welcome");
+    welcomeActionsAnchor.parentNode.insertBefore(fullscreenWelcome, welcomeActionsAnchor);
+  }
+
+  const topbarRight = document.querySelector(".topbar__right");
+  if (topbarRight && !document.querySelector(".fullscreen-button--topbar")) {
+    const fullscreenTop = createFullscreenButton("fullscreen-button--topbar");
+    topbarRight.prepend(fullscreenTop);
+  }
+
+  updateFullscreenButtons();
+}
+
+document.addEventListener("fullscreenchange", updateFullscreenButtons);
+document.addEventListener("webkitfullscreenchange", updateFullscreenButtons);
+
 updateVolumeUI();
 buildGallery();
+installExhibitionUI();
 playAmbientVideo();
 
 // Permite abrir directamente un relato mediante #id.
