@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="footer-responsive.css?v=20260926j">
   <link rel="stylesheet" href="sonic-hover.css?v=20260926f">
   <link rel="stylesheet" href="mobile-header-fix.css?v=20260926h">
-  <link rel="stylesheet" href="home-layout.css?v=20260926i">
+  <link rel="stylesheet" href="home-layout.css?v=20260926k">
 </head>
 <body class="is-welcome">
   <video class="ambient-video" id="ambientVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -24,7 +24,10 @@
   <section class="welcome" id="welcome">
     <div class="welcome__glow"></div>
     <div class="welcome__content">
-      <h1>Relatos<br><span>Binaurales</span></h1>
+      <h1 class="welcome__title" aria-label="Relatos Binaurales">
+        <span class="welcome__relatos">Relatos</span>
+        <img class="welcome__binaurales-mark" src="assets/branding/binaurales-outline.svg" alt="" aria-hidden="true">
+      </h1>
       <p class="welcome__desc">Historias construidas para habitar el espacio sonoro.</p>
 
       <div class="headphones">
@@ -40,10 +43,8 @@
       <button class="enter-button" id="enterButton"><span>ENTRAR A LA MUESTRA</span><span class="enter-button__arrow">→</span></button>
 
       <div class="academic-credit academic-credit--welcome">
-        <span>TRABAJOS PRODUCIDOS EN EL MARCO DE</span>
-        <strong>Producción de Sonido y Música III</strong>
-        <small>Tecnicatura Superior en Diseño, Imagen y Sonido · CENT N.º 11</small>
-        <small>Profesor · Luciano Tambella Caruso</small>
+        <div class="home-credit__line home-credit__line--primary">Trabajos producidos en el marco de · <strong>Producción de Sonido y Música III</strong></div>
+        <div class="home-credit__line home-credit__line--secondary">Tecnicatura Superior en Diseño, Imagen y Sonido · CENT N.º 11 · Profesor Luciano Tambella Caruso</div>
       </div>
     </div>
   </section>
@@ -106,7 +107,7 @@
     </section>
   </main>
 
-  <script src="app.js?v=20260926h"></script>
+  <script src="app.js?v=20260926k"></script>
   <script src="feedback.js?v=20260926b"></script>
   <script src="feedback-live.js?v=20260926b"></script>
   <script src="sonic-hover.js?v=20260926g"></script>
