@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="responsive-fixes.css?v=20260926c">
   <link rel="stylesheet" href="footer-responsive.css?v=20260926e">
   <link rel="stylesheet" href="sonic-hover.css?v=20260926f">
-  <link rel="stylesheet" href="mobile-header-fix.css?v=20260926g">
+  <link rel="stylesheet" href="mobile-header-fix.css?v=20260926h">
 </head>
 <body class="is-welcome">
   <video class="ambient-video" id="ambientVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -49,8 +49,10 @@
 
   <main class="site" id="site" aria-hidden="true">
     <header class="topbar">
-      <button class="brand" id="homeButton" aria-label="Volver a la galería">
-        <span class="brand__mark">◉</span>
+      <button class="brand" id="homeButton" aria-label="Volver al inicio">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="presentation"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.1a.9.9 0 0 1-.9.9h-5.2v-6.1H9.6v6.1H4.4a.9.9 0 0 1-.9-.9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </span>
         <span class="brand__academic"><strong>RELATOS BINAURALES</strong><small>Producción de Sonido y Música III</small></span>
       </button>
       <div class="topbar__right">
@@ -60,8 +62,6 @@
     </header>
 
     <section class="gallery-view" id="galleryView">
-      <button class="gallery-home-button" id="galleryHomeButton" type="button"><span aria-hidden="true">←</span> VOLVER AL INICIO</button>
-
       <div class="hero">
         <p class="eyebrow">TRABAJOS PRODUCIDOS EN EL MARCO DE PRODUCCIÓN DE SONIDO Y MÚSICA III</p>
         <h2>Elegí una historia.<br><span>Cerrá los ojos. Escuchá.</span></h2>
@@ -102,7 +102,7 @@
     </section>
   </main>
 
-  <script src="app.js?v=20260926b"></script>
+  <script src="app.js?v=20260926h"></script>
   <script src="feedback.js?v=20260926b"></script>
   <script src="feedback-live.js?v=20260926b"></script>
   <script src="sonic-hover.js?v=20260926g"></script>
