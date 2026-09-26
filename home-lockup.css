@@ -1,0 +1,49 @@
+/* Lockup final vectorizado para el Home */
+.welcome__title {
+  width: min(100%, 650px) !important;
+  margin: 0 auto !important;
+  line-height: 1 !important;
+}
+
+.welcome__lockup {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 18px rgba(0,0,0,.22));
+}
+
+/* Evita que reglas antiguas de RELATOS/BINAURALES afecten el nuevo lockup. */
+.welcome__relatos,
+.welcome__binaurales-mark {
+  display: none !important;
+}
+
+@media (min-width: 761px) and (max-width: 1180px) and (orientation: landscape) {
+  .welcome__title {
+    width: min(100%, 570px) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .welcome__title {
+    width: min(92vw, 520px) !important;
+  }
+
+  .welcome__desc {
+    margin-top: 20px !important;
+  }
+}
+
+@media (max-width: 460px) {
+  .welcome__title {
+    width: min(90vw, 430px) !important;
+  }
+}
+
+@media (max-height: 620px) and (orientation: landscape) {
+  .welcome__title {
+    width: min(58vw, 500px) !important;
+  }
+}
