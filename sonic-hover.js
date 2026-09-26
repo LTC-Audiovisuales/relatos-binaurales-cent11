@@ -8,7 +8,6 @@
     '.fullscreen-button',
     '.gallery-home-button',
     '.back-button',
-    '.play-button',
     '.feedback-submit-button',
     '.feedback-back-button',
     '.feedback-finish-button'
