@@ -1,6 +1,6 @@
 const enhancementStyles = document.createElement("link");
 enhancementStyles.rel = "stylesheet";
-enhancementStyles.href = "exhibition-enhancements.css";
+enhancementStyles.href = "exhibition-enhancements.css?v=20260926k";
 document.head.appendChild(enhancementStyles);
 
 const relatos = [
