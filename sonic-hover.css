@@ -1,3 +1,55 @@
+/* Botones y navegación más suaves, manteniendo la estética oscura */
+.enter-button,
+.fullscreen-button,
+.feedback-nav-button,
+.gallery-home-button,
+.back-button,
+.feedback-submit-button,
+.feedback-back-button,
+.feedback-finish-button {
+  border-radius: 12px;
+}
+
+.enter-button {
+  border-radius: 14px;
+}
+
+.fullscreen-button,
+.feedback-nav-button {
+  border-radius: 10px;
+}
+
+.brand {
+  border-radius: 12px;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.brand:hover,
+.brand:focus-visible {
+  background: rgba(255,255,255,.045);
+  outline: none;
+}
+
+.brand__mark {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 9px;
+  color: #d9e0e5;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.player {
+  border-radius: 14px;
+}
+
+.player__status {
+  letter-spacing: .08em;
+}
+
 /* Hover sonoro / ripple para escritorio. En touch no se activa. */
 @media (hover: hover) and (pointer: fine) {
   .sonic-hover {
@@ -25,7 +77,6 @@
     z-index: 2;
   }
 
-  /* Halo localizado que sigue el puntero */
   .sonic-hover::before {
     background:
       radial-gradient(circle at var(--sx) var(--sy),
@@ -36,7 +87,6 @@
     mix-blend-mode: screen;
   }
 
-  /* Ondas concéntricas tipo propagación de audio */
   .sonic-hover::after {
     left: var(--sx);
     top: var(--sy);
@@ -75,7 +125,6 @@
     animation: sonicClick .46s ease-out 1 !important;
   }
 
-  /* El botón blanco del Home necesita un ripple más oscuro para que se vea. */
   .enter-button.sonic-hover::before {
     background:
       radial-gradient(circle at var(--sx) var(--sy),
@@ -90,7 +139,6 @@
     box-shadow: 0 0 16px rgba(83, 105, 200, .16);
   }
 
-  /* Cards: reacción mínima, más ambiental que botón. */
   .card.sonic-card {
     --sx: 50%;
     --sy: 50%;
@@ -107,28 +155,14 @@
   }
 
   @keyframes sonicRipple {
-    0% {
-      opacity: .58;
-      transform: translate(-50%, -50%) scale(.3);
-    }
-    55% {
-      opacity: .24;
-    }
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(4.8);
-    }
+    0% { opacity: .58; transform: translate(-50%, -50%) scale(.3); }
+    55% { opacity: .24; }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(4.8); }
   }
 
   @keyframes sonicClick {
-    0% {
-      opacity: .82;
-      transform: translate(-50%, -50%) scale(.2);
-    }
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(6.5);
-    }
+    0% { opacity: .82; transform: translate(-50%, -50%) scale(.2); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(6.5); }
   }
 }
 
