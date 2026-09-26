@@ -1,4 +1,71 @@
-/* Home: composición editorial, menos centrada y más de interfaz */
+/* Home: composición editorial + wordmark estable */
+
+.welcome__title {
+  margin: 0;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+
+/* RELATOS sigue siendo texto; BINAURALES es un SVG de contornos fijos para que
+   no cambie su dibujo al variar ancho, orientación o dispositivo. */
+.welcome__relatos {
+  display: block !important;
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: 1em !important;
+  font-weight: 900 !important;
+  line-height: .88 !important;
+  letter-spacing: -.065em !important;
+  opacity: 1 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: 0 2px 18px rgba(0,0,0,.22) !important;
+}
+
+.welcome__binaurales-mark {
+  display: block;
+  width: min(100%, 650px);
+  height: auto;
+  margin: 12px 0 0;
+  object-fit: contain;
+  object-position: left center;
+  opacity: .9;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.28));
+}
+
+.academic-credit--welcome {
+  width: min(940px, calc(100vw - 36px));
+  margin-top: 26px !important;
+  color: rgba(255,255,255,.52);
+  text-align: center !important;
+  text-shadow: 0 1px 10px rgba(0,0,0,.42);
+}
+
+.home-credit__line {
+  margin: 0 auto;
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.home-credit__line--primary {
+  color: rgba(255,255,255,.58);
+  font-size: 10px;
+  line-height: 1.45;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.home-credit__line--primary strong {
+  color: rgba(255,255,255,.86);
+  font-weight: 800;
+}
+
+.home-credit__line--secondary {
+  margin-top: 5px;
+  color: rgba(255,255,255,.42);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
 @media (min-width: 761px) {
   .welcome {
     place-items: center start !important;
@@ -12,15 +79,11 @@
     text-align: left !important;
   }
 
-  .welcome h1,
+  .welcome__title,
   .welcome__desc,
-  .headphones,
-  .academic-credit--welcome {
+  .headphones {
     margin-left: 0 !important;
     margin-right: 0 !important;
-  }
-
-  .welcome h1 {
     text-align: left !important;
   }
 
@@ -28,12 +91,10 @@
     max-width: 620px !important;
     margin-top: 28px !important;
     margin-bottom: 28px !important;
-    text-align: left !important;
   }
 
   .headphones {
     width: min(560px, 100%) !important;
-    text-align: left !important;
   }
 
   .enter-button {
@@ -41,33 +102,16 @@
     margin-right: 0 !important;
   }
 
+  /* El crédito funciona como cierre del Home, centrado respecto de la pantalla. */
   .academic-credit--welcome {
-    display: grid !important;
-    grid-template-columns: auto auto;
-    justify-content: start;
-    align-items: baseline;
-    column-gap: 8px;
-    row-gap: 5px;
-    width: min(690px, 100%);
-    margin-top: 24px !important;
-    text-align: left !important;
-  }
-
-  .academic-credit--welcome > * {
-    margin: 0 !important;
-    max-width: none !important;
-    text-align: left !important;
-    white-space: nowrap;
-  }
-
-  .academic-credit--welcome > span:first-child::after,
-  .academic-credit--welcome > small:nth-of-type(1)::after {
-    content: " ·";
-    color: rgba(255,255,255,.28);
+    position: relative;
+    left: calc((100vw - min(690px, 58vw)) / 2 - clamp(48px, 9vw, 150px));
+    transform: translateX(-50%);
+    margin-top: 28px !important;
   }
 }
 
-/* Tablet horizontal: conservar la composición editorial sin apretar el contenido */
+/* Tablet horizontal: conservar composición editorial y wordmark sin deformar. */
 @media (min-width: 761px) and (max-width: 1180px) and (orientation: landscape) {
   .welcome {
     padding-left: clamp(36px, 6vw, 72px) !important;
@@ -78,23 +122,76 @@
     width: min(640px, 66vw) !important;
   }
 
-  .welcome h1 {
+  .welcome__title {
     font-size: clamp(62px, 8.2vw, 92px) !important;
   }
 
+  .welcome__binaurales-mark {
+    width: min(100%, 590px);
+  }
+
   .academic-credit--welcome {
-    width: min(640px, 100%);
+    left: calc((100vw - min(640px, 66vw)) / 2 - clamp(36px, 6vw, 72px));
   }
 }
 
-/* En móvil mantenemos la lectura centrada y segura que ya venía funcionando */
 @media (max-width: 760px) {
-  .academic-credit--welcome {
-    display: block !important;
+  .welcome__content {
+    width: min(100%, calc(100vw - 32px)) !important;
+  }
+
+  .welcome__title {
+    width: 100%;
+    font-size: clamp(46px, 14vw, 68px) !important;
     text-align: center !important;
   }
 
-  .academic-credit--welcome > * {
-    white-space: normal !important;
+  .welcome__relatos {
+    text-align: center;
+    letter-spacing: -.055em !important;
+  }
+
+  .welcome__binaurales-mark {
+    width: min(100%, 540px);
+    margin: 10px auto 0;
+    object-position: center;
+  }
+
+  .academic-credit--welcome {
+    width: min(100%, calc(100vw - 34px));
+    margin: 24px auto 0 !important;
+    padding: 0 2px;
+  }
+
+  .home-credit__line--primary {
+    font-size: 9px;
+    line-height: 1.5;
+    letter-spacing: .035em;
+  }
+
+  .home-credit__line--secondary {
+    margin-top: 4px;
+    font-size: 9px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 460px) {
+  .welcome__title {
+    font-size: clamp(42px, 13.5vw, 56px) !important;
+  }
+
+  .welcome__binaurales-mark {
+    width: 96%;
+    margin-top: 8px;
+  }
+
+  .academic-credit--welcome {
+    margin-top: 20px !important;
+  }
+
+  .home-credit__line--primary,
+  .home-credit__line--secondary {
+    font-size: 8.5px;
   }
 }
