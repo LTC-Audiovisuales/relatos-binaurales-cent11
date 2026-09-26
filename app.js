@@ -1,4 +1,3 @@
-
 const enhancementStyles = document.createElement("link");
 enhancementStyles.rel = "stylesheet";
 enhancementStyles.href = "exhibition-enhancements.css";
@@ -68,12 +67,9 @@ const currentTimeEl = document.getElementById("currentTime");
 const durationEl = document.getElementById("duration");
 const playerStatus = document.getElementById("playerStatus");
 const activeAuthor = document.getElementById("activeAuthor");
-const volumeSlider = document.getElementById("volume");
-const volumeButton = document.getElementById("volumeButton");
-const volumeValue = document.getElementById("volumeValue");
 
-audio.volume = 0.85;
-let lastVolume = 0.85;
+// El volumen se controla físicamente desde cada auricular/caja de auriculares.
+audio.volume = 1;
 let currentStory = null;
 
 function buildGallery() {
@@ -172,7 +168,6 @@ function openStory(id) {
   galleryView.hidden = true;
   storyView.hidden = false;
   window.scrollTo({ top: 0, behavior: "smooth" });
-
   history.replaceState(null, "", `#${story.id}`);
 }
 
@@ -189,12 +184,8 @@ function showGallery() {
 
 function togglePlay() {
   if (!currentStory) return;
-
-  if (audio.paused) {
-    audio.play().catch(() => {});
-  } else {
-    audio.pause();
-  }
+  if (audio.paused) audio.play().catch(() => {});
+  else audio.pause();
 }
 
 function stopAudio() {
@@ -265,40 +256,8 @@ document.addEventListener("keydown", e => {
     e.preventDefault();
     togglePlay();
   }
-  if (!storyView.hidden && e.key === "Escape") {
-    showGallery();
-  }
+  if (!storyView.hidden && e.key === "Escape") showGallery();
 });
-
-function updateVolumeUI() {
-  const percent = Math.round(audio.volume * 100);
-  volumeSlider.value = percent;
-  volumeSlider.style.setProperty("--volume-progress", `${percent}%`);
-  volumeValue.textContent = audio.muted ? "0%" : `${percent}%`;
-  volumeButton.textContent = (audio.muted || audio.volume === 0) ? "MUTE" : "VOL";
-  volumeButton.setAttribute("aria-label", audio.muted ? "Activar sonido" : "Silenciar");
-}
-
-volumeSlider.addEventListener("input", () => {
-  const value = Number(volumeSlider.value) / 100;
-  audio.volume = value;
-  audio.muted = false;
-  if (value > 0) lastVolume = value;
-  updateVolumeUI();
-});
-
-volumeButton.addEventListener("click", () => {
-  if (audio.muted || audio.volume === 0) {
-    audio.muted = false;
-    if (audio.volume === 0) audio.volume = lastVolume || 0.85;
-  } else {
-    lastVolume = audio.volume;
-    audio.muted = true;
-  }
-  updateVolumeUI();
-});
-
-audio.addEventListener("volumechange", updateVolumeUI);
 
 function getFullscreenElement() {
   return document.fullscreenElement || document.webkitFullscreenElement || null;
@@ -317,12 +276,8 @@ async function requestAppFullscreen() {
       else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       return;
     }
-
-    if (root.requestFullscreen) {
-      await root.requestFullscreen({ navigationUI: "hide" });
-    } else if (root.webkitRequestFullscreen) {
-      root.webkitRequestFullscreen();
-    }
+    if (root.requestFullscreen) await root.requestFullscreen({ navigationUI: "hide" });
+    else if (root.webkitRequestFullscreen) root.webkitRequestFullscreen();
   } catch (_) {}
 }
 
@@ -348,22 +303,6 @@ function updateFullscreenButtons() {
 }
 
 function installExhibitionUI() {
-  const welcomeCredit = document.querySelector(".academic-credit--welcome");
-  if (welcomeCredit && !welcomeCredit.querySelector(".professor-credit")) {
-    const professor = document.createElement("small");
-    professor.className = "professor-credit";
-    professor.textContent = "Profesor · Luciano Tambella Caruso";
-    welcomeCredit.appendChild(professor);
-  }
-
-  const footerCenter = document.querySelector(".footer__center");
-  if (footerCenter && !footerCenter.querySelector(".footer__professor")) {
-    const professor = document.createElement("span");
-    professor.className = "footer__professor";
-    professor.textContent = "Profesor · Luciano Tambella Caruso";
-    footerCenter.appendChild(professor);
-  }
-
   const welcomeActionsAnchor = document.querySelector(".academic-credit--welcome");
   if (welcomeActionsAnchor && !document.querySelector(".fullscreen-button--welcome")) {
     const fullscreenWelcome = createFullscreenButton("fullscreen-button--welcome");
@@ -382,12 +321,10 @@ function installExhibitionUI() {
 document.addEventListener("fullscreenchange", updateFullscreenButtons);
 document.addEventListener("webkitfullscreenchange", updateFullscreenButtons);
 
-updateVolumeUI();
 buildGallery();
 installExhibitionUI();
 playAmbientVideo();
 
-// Permite abrir directamente un relato mediante #id.
 const requested = location.hash.replace("#", "");
 if (requested && relatos.some(r => r.id === requested)) {
   enterExperience();
