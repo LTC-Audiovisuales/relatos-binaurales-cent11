@@ -1,8 +1,6 @@
 @import url("home-legibility.css?v=20260926a");
 
 /* Mejoras para modo exhibición */
-
-/* El video ya tiene textura propia: reducimos el grano artificial superpuesto. */
 .noise {
   opacity: .012 !important;
 }
@@ -11,33 +9,58 @@
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  min-height: 44px;
-  border: 1px solid rgba(255,255,255,.18);
-  padding: 11px 15px;
-  background: rgba(255,255,255,.035);
-  color: #d7dde1;
+  gap: 8px;
+  min-height: 40px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 10px;
+  padding: 9px 12px;
+  background: rgba(5,8,12,.30);
+  color: rgba(235,240,243,.78);
   cursor: pointer;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: .09em;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .07em;
   text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .fullscreen-button:hover,
 .fullscreen-button:focus-visible {
-  border-color: rgba(255,255,255,.42);
-  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.34);
+  background: rgba(255,255,255,.055);
+  color: #fff;
   outline: none;
 }
 
 .fullscreen-button__icon {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1;
 }
 
+/* En el Home es una herramienta secundaria: sólo icono, arriba a la izquierda. */
 .fullscreen-button--welcome {
-  margin: 12px auto 0;
+  position: fixed;
+  z-index: 180;
+  top: max(16px, env(safe-area-inset-top));
+  left: max(16px, env(safe-area-inset-left));
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+  margin: 0 !important;
+  padding: 0;
+  border-radius: 9px;
+  background: rgba(5,8,12,.20);
+}
+
+.fullscreen-button--welcome .fullscreen-button__label {
+  display: none !important;
+}
+
+.fullscreen-button--welcome .fullscreen-button__icon {
+  font-size: 17px;
+  opacity: .8;
 }
 
 .fullscreen-button--topbar {
@@ -61,8 +84,6 @@
   transform: translateY(-1px);
 }
 
-/* El reproductor queda deliberadamente simple: play/pausa + scrubber.
-   El volumen se maneja desde la caja/auriculares de cada usuario. */
 .player__main {
   align-self: center;
 }
@@ -74,6 +95,15 @@
 }
 
 @media (max-width: 760px) {
+  .fullscreen-button--welcome {
+    top: max(12px, env(safe-area-inset-top));
+    left: max(12px, env(safe-area-inset-left));
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    min-height: 34px;
+  }
+
   .fullscreen-button--topbar {
     font-size: 0;
     width: 38px;
@@ -81,34 +111,16 @@
     padding: 0;
   }
 
+  .fullscreen-button--topbar .fullscreen-button__label {
+    display: none !important;
+  }
+
   .fullscreen-button--topbar .fullscreen-button__icon {
     font-size: 18px;
   }
 
-  /* Evita que BINAURALES se salga o se monte en celulares angostos. */
-  .welcome__content {
-    width: min(100%, calc(100vw - 32px));
-  }
-
-  .welcome h1 {
-    width: 100%;
-    font-size: clamp(42px, 13vw, 64px) !important;
-    line-height: .88;
-    letter-spacing: -.055em;
-  }
-
-  .welcome h1 span {
-    display: block;
-    width: 100%;
-    white-space: nowrap;
-  }
-
   .welcome__desc {
     max-width: 92%;
-  }
-
-  .gallery-home-button {
-    gap: 9px;
   }
 
   .player {
@@ -122,14 +134,6 @@
 }
 
 @media (max-width: 460px) {
-  .welcome h1 {
-    font-size: clamp(40px, 12.5vw, 54px) !important;
-  }
-
-  .welcome h1 span {
-    -webkit-text-stroke-width: 1px;
-  }
-
   .player {
     grid-template-columns: 54px minmax(0, 1fr) !important;
     gap: 14px !important;
