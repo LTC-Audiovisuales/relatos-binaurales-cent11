@@ -2,19 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#06090d">
   <title>Relatos Binaurales · Semana de la Voz</title>
   <meta name="description" content="Muestra interactiva de relatos sonoros binaurales de Producción de Sonido y Música III · CENT N.º 11.">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive-fixes.css">
 </head>
-<body>
+<body class="is-welcome">
+  <video class="ambient-video" id="ambientVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="assets/video/fondo-relatos-mobile.mp4" type="video/mp4" media="(max-width: 700px)">
+    <source src="assets/video/fondo-relatos-desktop.mp4" type="video/mp4">
+  </video>
+  <div class="ambient-video-overlay" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
 
   <section class="welcome" id="welcome">
     <div class="welcome__glow"></div>
     <div class="welcome__content">
-<p class="eyebrow">SEMANA DE LA VOZ</p>
+      <p class="eyebrow">SEMANA DE LA VOZ</p>
       <h1>Relatos<br><span>Binaurales</span></h1>
       <p class="welcome__desc">
         Historias construidas para habitar el espacio sonoro.
@@ -64,6 +70,10 @@
     </header>
 
     <section class="gallery-view" id="galleryView">
+      <button class="gallery-home-button" id="galleryHomeButton" type="button">
+        <span>←</span> VOLVER AL INICIO
+      </button>
+
       <div class="hero">
         <p class="eyebrow">TRABAJOS PRODUCIDOS EN EL MARCO DE PRODUCCIÓN DE SONIDO Y MÚSICA III</p>
         <h2>Elegí una historia.<br><span>Cerrá los ojos. Escuchá.</span></h2>
