@@ -1,0 +1,88 @@
+/* Ajustes visuales del Home sobre el video de fondo */
+
+.welcome__content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 44%;
+  width: min(860px, 112%);
+  height: 92%;
+  transform: translate(-50%, -50%);
+  border-radius: 46%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center,
+    rgba(3, 5, 9, .38) 0%,
+    rgba(3, 5, 9, .25) 42%,
+    rgba(3, 5, 9, .10) 68%,
+    transparent 82%);
+  filter: blur(24px);
+}
+
+.welcome h1 {
+  line-height: .88 !important;
+  text-shadow: 0 2px 18px rgba(0,0,0,.22);
+}
+
+.welcome h1 span {
+  display: block;
+  margin-top: .12em;
+  font-size: .82em;
+  line-height: 1;
+  opacity: .78;
+  -webkit-text-stroke: 1px rgba(255,255,255,.66);
+  text-shadow: 0 2px 18px rgba(0,0,0,.34);
+}
+
+.welcome__desc,
+.headphones,
+.academic-credit--welcome {
+  text-shadow: 0 1px 10px rgba(0,0,0,.38);
+}
+
+.headphones {
+  background: rgba(5,8,12,.18) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+@media (max-width: 760px) {
+  .welcome__content::before {
+    top: 43%;
+    width: 118%;
+    height: 88%;
+    background: radial-gradient(ellipse at center,
+      rgba(3,5,9,.46) 0%,
+      rgba(3,5,9,.30) 45%,
+      rgba(3,5,9,.12) 70%,
+      transparent 84%);
+  }
+
+  .welcome h1 {
+    line-height: .94 !important;
+    letter-spacing: -.045em !important;
+  }
+
+  .welcome h1 span {
+    margin-top: .18em;
+    font-size: .72em;
+    letter-spacing: -.035em;
+    opacity: .74;
+  }
+}
+
+@media (max-width: 460px) {
+  .welcome h1 {
+    font-size: clamp(42px, 15vw, 58px) !important;
+  }
+
+  .welcome h1 span {
+    margin-top: .22em;
+    font-size: .68em;
+    letter-spacing: -.025em;
+  }
+
+  .welcome__desc {
+    margin-top: 26px !important;
+  }
+}
