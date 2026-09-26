@@ -10,8 +10,56 @@
   border-radius: 12px;
 }
 
+/* CTA principal: versión violeta elegida para el Home. */
 .enter-button {
-  border-radius: 14px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(470px, 100%);
+  min-width: 0 !important;
+  min-height: 62px;
+  padding: 17px 24px !important;
+  border: 1.5px solid rgba(183, 93, 255, .92) !important;
+  border-radius: 22px !important;
+  background:
+    linear-gradient(180deg, rgba(29, 22, 47, .72), rgba(8, 11, 19, .82)) !important;
+  color: #f7f5fb !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 0 0 1px rgba(116, 68, 196, .08),
+    0 0 18px rgba(151, 72, 235, .12) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Inter, sans-serif;
+  font-size: clamp(13px, .95vw, 15px) !important;
+  font-weight: 800 !important;
+  line-height: 1;
+  letter-spacing: .115em !important;
+  text-transform: uppercase;
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    background .22s ease,
+    box-shadow .25s ease,
+    color .22s ease;
+}
+
+.enter-button > span {
+  position: relative;
+  z-index: 2;
+}
+
+.enter-button__arrow {
+  font-size: 27px;
+  font-weight: 400;
+  line-height: .7;
+  letter-spacing: 0;
+  transition: transform .22s ease, text-shadow .22s ease;
+}
+
+.enter-button:focus-visible {
+  outline: 2px solid rgba(236, 201, 255, .9);
+  outline-offset: 4px;
 }
 
 .fullscreen-button,
@@ -125,18 +173,51 @@
     animation: sonicClick .46s ease-out 1 !important;
   }
 
+  /* El CTA elegido usa un glow estable violeta, no el ripple circular genérico. */
   .enter-button.sonic-hover::before {
+    inset: 0;
+    opacity: 0;
     background:
       radial-gradient(circle at var(--sx) var(--sy),
-        rgba(84, 68, 210, .18) 0 8%,
-        rgba(83, 175, 206, .11) 15%,
-        transparent 40%);
-    mix-blend-mode: multiply;
+        rgba(220, 80, 255, .28) 0 10%,
+        rgba(154, 61, 255, .18) 24%,
+        rgba(90, 52, 180, .09) 42%,
+        transparent 64%),
+      linear-gradient(180deg, rgba(89, 30, 126, .16), rgba(40, 14, 70, .08));
+    mix-blend-mode: screen;
+    transition: opacity .24s ease;
   }
 
   .enter-button.sonic-hover::after {
-    border-color: rgba(66, 66, 128, .42);
-    box-shadow: 0 0 16px rgba(83, 105, 200, .16);
+    display: none;
+  }
+
+  .enter-button:hover,
+  .enter-button:focus-visible,
+  .enter-button.sonic-hover:hover,
+  .enter-button.sonic-hover:focus-visible {
+    transform: translateY(-2px) scale(1.008);
+    border-color: rgba(247, 92, 255, 1) !important;
+    background:
+      linear-gradient(180deg, rgba(72, 19, 99, .82), rgba(27, 8, 49, .90)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.10),
+      inset 0 0 24px rgba(214, 64, 255, .12),
+      0 0 0 1px rgba(225, 86, 255, .35),
+      0 0 14px rgba(231, 69, 255, .58),
+      0 0 34px rgba(169, 58, 255, .42),
+      0 0 58px rgba(110, 45, 238, .22) !important;
+  }
+
+  .enter-button.sonic-hover:hover::before,
+  .enter-button.sonic-hover:focus-visible::before {
+    opacity: .95;
+  }
+
+  .enter-button:hover .enter-button__arrow,
+  .enter-button:focus-visible .enter-button__arrow {
+    transform: translateX(4px);
+    text-shadow: 0 0 12px rgba(237, 161, 255, .9);
   }
 
   .card.sonic-card {
@@ -163,6 +244,30 @@
   @keyframes sonicClick {
     0% { opacity: .82; transform: translate(-50%, -50%) scale(.2); }
     100% { opacity: 0; transform: translate(-50%, -50%) scale(6.5); }
+  }
+}
+
+@media (max-width: 760px) {
+  .enter-button {
+    min-height: 58px;
+    border-radius: 20px !important;
+    padding: 15px 20px !important;
+    font-size: 13px !important;
+    letter-spacing: .095em !important;
+  }
+
+  .enter-button__arrow {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .enter-button {
+    min-height: 56px;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    font-size: 12px !important;
+    letter-spacing: .075em !important;
   }
 }
 
