@@ -1,0 +1,100 @@
+/* Home: composición editorial, menos centrada y más de interfaz */
+@media (min-width: 761px) {
+  .welcome {
+    place-items: center start !important;
+    padding-left: clamp(48px, 9vw, 150px) !important;
+    padding-right: clamp(40px, 7vw, 120px) !important;
+  }
+
+  .welcome__content {
+    width: min(690px, 58vw) !important;
+    margin: 0 !important;
+    text-align: left !important;
+  }
+
+  .welcome h1,
+  .welcome__desc,
+  .headphones,
+  .academic-credit--welcome {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .welcome h1 {
+    text-align: left !important;
+  }
+
+  .welcome__desc {
+    max-width: 620px !important;
+    margin-top: 28px !important;
+    margin-bottom: 28px !important;
+    text-align: left !important;
+  }
+
+  .headphones {
+    width: min(560px, 100%) !important;
+    text-align: left !important;
+  }
+
+  .enter-button {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .academic-credit--welcome {
+    display: grid !important;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: baseline;
+    column-gap: 8px;
+    row-gap: 5px;
+    width: min(690px, 100%);
+    margin-top: 24px !important;
+    text-align: left !important;
+  }
+
+  .academic-credit--welcome > * {
+    margin: 0 !important;
+    max-width: none !important;
+    text-align: left !important;
+    white-space: nowrap;
+  }
+
+  .academic-credit--welcome > span:first-child::after,
+  .academic-credit--welcome > small:nth-of-type(1)::after {
+    content: " ·";
+    color: rgba(255,255,255,.28);
+  }
+}
+
+/* Tablet horizontal: conservar la composición editorial sin apretar el contenido */
+@media (min-width: 761px) and (max-width: 1180px) and (orientation: landscape) {
+  .welcome {
+    padding-left: clamp(36px, 6vw, 72px) !important;
+    padding-right: 36px !important;
+  }
+
+  .welcome__content {
+    width: min(640px, 66vw) !important;
+  }
+
+  .welcome h1 {
+    font-size: clamp(62px, 8.2vw, 92px) !important;
+  }
+
+  .academic-credit--welcome {
+    width: min(640px, 100%);
+  }
+}
+
+/* En móvil mantenemos la lectura centrada y segura que ya venía funcionando */
+@media (max-width: 760px) {
+  .academic-credit--welcome {
+    display: block !important;
+    text-align: center !important;
+  }
+
+  .academic-credit--welcome > * {
+    white-space: normal !important;
+  }
+}
