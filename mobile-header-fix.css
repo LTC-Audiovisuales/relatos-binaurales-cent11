@@ -1,4 +1,30 @@
 /* Ajustes de cabecera para teléfonos y tablet vertical */
+
+.brand {
+  gap: 10px !important;
+}
+
+.brand__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: #c9d1d7;
+}
+
+.brand__mark svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.brand:hover .brand__mark,
+.brand:focus-visible .brand__mark {
+  color: #fff;
+}
+
 @media (max-width: 760px) {
   .topbar {
     display: flex;
@@ -13,6 +39,19 @@
     flex: 1 1 auto;
     min-width: 0;
     max-width: none !important;
+    gap: 8px !important;
+  }
+
+  .brand__mark {
+    display: inline-flex !important;
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+  .brand__mark svg {
+    width: 16px;
+    height: 16px;
   }
 
   .brand__academic {
@@ -66,5 +105,16 @@
 
   .brand__academic strong {
     font-size: 9px !important;
+  }
+
+  .brand__mark {
+    width: 17px;
+    height: 17px;
+    flex-basis: 17px;
+  }
+
+  .brand__mark svg {
+    width: 15px;
+    height: 15px;
   }
 }
