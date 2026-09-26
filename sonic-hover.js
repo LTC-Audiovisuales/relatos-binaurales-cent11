@@ -1,4 +1,43 @@
 (() => {
+  const homeButton = document.getElementById('homeButton');
+  const galleryHomeButton = document.getElementById('galleryHomeButton');
+  const audio = document.getElementById('audio');
+  const playerStatus = document.getElementById('playerStatus');
+
+  // La marca superior funciona siempre como Home.
+  if (homeButton && galleryHomeButton) {
+    homeButton.setAttribute('aria-label', 'Volver al inicio');
+    const mark = homeButton.querySelector('.brand__mark');
+    if (mark) mark.textContent = '⌂';
+
+    homeButton.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      galleryHomeButton.click();
+    }, true);
+  }
+
+  // Estado del reproductor: comunica una acción, no un mensaje decorativo.
+  if (audio && playerStatus) {
+    const setReady = () => {
+      if (audio.currentTime <= 0.05 || audio.ended) playerStatus.textContent = 'REPRODUCIR RELATO';
+    };
+
+    audio.addEventListener('loadedmetadata', setReady);
+    audio.addEventListener('play', () => {
+      playerStatus.textContent = 'REPRODUCIENDO';
+    });
+    audio.addEventListener('pause', () => {
+      if (!audio.ended) {
+        playerStatus.textContent = audio.currentTime > 0.05 ? 'PAUSADO' : 'REPRODUCIR RELATO';
+      }
+    });
+    audio.addEventListener('ended', () => {
+      playerStatus.textContent = 'VOLVER A ESCUCHAR';
+    });
+  }
+
+  // Efecto sonoro/ripple sólo para dispositivos con mouse.
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   if (!finePointer.matches) return;
 
