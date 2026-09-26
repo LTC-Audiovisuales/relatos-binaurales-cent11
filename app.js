@@ -68,7 +68,6 @@ const durationEl = document.getElementById("duration");
 const playerStatus = document.getElementById("playerStatus");
 const activeAuthor = document.getElementById("activeAuthor");
 
-// El volumen se controla físicamente desde cada auricular/caja de auriculares.
 audio.volume = 1;
 let currentStory = null;
 
@@ -247,7 +246,7 @@ seek.addEventListener("input", () => {
 
 enterButton.addEventListener("click", enterExperience);
 backButton.addEventListener("click", showGallery);
-homeButton.addEventListener("click", showGallery);
+homeButton.addEventListener("click", showWelcome);
 galleryHomeButton?.addEventListener("click", showWelcome);
 playButton.addEventListener("click", togglePlay);
 
