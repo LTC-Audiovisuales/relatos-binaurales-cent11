@@ -46,6 +46,8 @@ const storyView = document.getElementById("storyView");
 const gallery = document.getElementById("gallery");
 const backButton = document.getElementById("backButton");
 const homeButton = document.getElementById("homeButton");
+const galleryHomeButton = document.getElementById("galleryHomeButton");
+const ambientVideo = document.getElementById("ambientVideo");
 
 const storyBg = document.getElementById("storyBg");
 const storyCover = document.getElementById("storyCover");
@@ -67,7 +69,6 @@ const volumeValue = document.getElementById("volumeValue");
 
 audio.volume = 0.85;
 let lastVolume = 0.85;
-
 let currentStory = null;
 
 function buildGallery() {
@@ -114,10 +115,34 @@ function escapeHTML(value) {
   }[char]));
 }
 
+function playAmbientVideo() {
+  if (!ambientVideo) return;
+  ambientVideo.play().catch(() => {});
+}
+
 function enterExperience() {
+  document.body.classList.remove("is-welcome");
   welcome.classList.add("is-hidden");
   site.removeAttribute("aria-hidden");
+  galleryView.hidden = false;
+  storyView.hidden = true;
+  playAmbientVideo();
   window.scrollTo({top: 0});
+}
+
+function showWelcome() {
+  stopAudio();
+  currentStory = null;
+  activeAuthor.hidden = true;
+  activeAuthor.textContent = "";
+  storyView.hidden = true;
+  galleryView.hidden = false;
+  site.setAttribute("aria-hidden", "true");
+  welcome.classList.remove("is-hidden");
+  document.body.classList.add("is-welcome");
+  history.replaceState(null, "", location.pathname + location.search);
+  playAmbientVideo();
+  window.scrollTo({ top: 0 });
 }
 
 function openStory(id) {
@@ -227,6 +252,7 @@ seek.addEventListener("input", () => {
 enterButton.addEventListener("click", enterExperience);
 backButton.addEventListener("click", showGallery);
 homeButton.addEventListener("click", showGallery);
+galleryHomeButton?.addEventListener("click", showWelcome);
 playButton.addEventListener("click", togglePlay);
 
 document.addEventListener("keydown", e => {
@@ -238,7 +264,6 @@ document.addEventListener("keydown", e => {
     showGallery();
   }
 });
-
 
 function updateVolumeUI() {
   const percent = Math.round(audio.volume * 100);
@@ -270,9 +295,8 @@ volumeButton.addEventListener("click", () => {
 
 audio.addEventListener("volumechange", updateVolumeUI);
 updateVolumeUI();
-
-
 buildGallery();
+playAmbientVideo();
 
 // Permite abrir directamente un relato mediante #id.
 const requested = location.hash.replace("#", "");
