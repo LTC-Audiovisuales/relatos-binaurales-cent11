@@ -57,7 +57,7 @@
     </header>
 
     <section class="gallery-view" id="galleryView">
-      <button class="gallery-home-button" id="galleryHomeButton" type="button"><span>←</span> VOLVER AL INICIO</button>
+      <button class="gallery-home-button" id="galleryHomeButton" type="button"><span aria-hidden="true">←</span> VOLVER AL INICIO</button>
 
       <div class="hero">
         <p class="eyebrow">TRABAJOS PRODUCIDOS EN EL MARCO DE PRODUCCIÓN DE SONIDO Y MÚSICA III</p>
@@ -91,10 +91,6 @@
             <div class="player__main">
               <div class="player__labels"><span id="currentTime">00:00</span><span class="player__status" id="playerStatus">LISTO PARA ESCUCHAR</span><span id="duration">00:00</span></div>
               <input id="seek" class="seek" type="range" min="0" max="1000" value="0" aria-label="Posición del audio">
-              <div class="player__bottom">
-                <div class="channels" aria-hidden="true"><span>L</span><div class="channels__line"></div><span class="channels__center">BINAURAL</span><div class="channels__line"></div><span>R</span></div>
-                <div class="volume-control"><button class="volume-button" id="volumeButton" aria-label="Silenciar">VOL</button><input id="volume" class="volume" type="range" min="0" max="100" value="85" aria-label="Volumen"><span class="volume-value" id="volumeValue">85%</span></div>
-              </div>
             </div>
           </div>
           <audio id="audio" preload="metadata"></audio>
