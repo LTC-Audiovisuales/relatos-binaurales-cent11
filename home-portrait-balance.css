@@ -1,0 +1,78 @@
+/* Balance vertical del Home en teléfonos en orientación portrait.
+   Mantiene tablet/desktop y landscape sin cambios. */
+@media (max-width: 760px) and (orientation: portrait) {
+  .welcome__content {
+    width: min(84vw, 520px) !important;
+    min-height: 100dvh !important;
+    padding-top: max(74px, calc(env(safe-area-inset-top) + 58px)) !important;
+    padding-bottom: max(22px, env(safe-area-inset-bottom)) !important;
+  }
+
+  /* El lockup baja apenas de escala para que no domine toda la pantalla. */
+  .welcome__title {
+    width: min(75vw, 430px) !important;
+  }
+
+  .welcome__desc {
+    max-width: 88% !important;
+    margin-top: 20px !important;
+    margin-bottom: 24px !important;
+    line-height: 1.48 !important;
+  }
+
+  .headphones {
+    width: 100% !important;
+    margin-bottom: 26px !important;
+  }
+
+  .enter-button {
+    width: 100% !important;
+  }
+
+  /* Los créditos funcionan como cierre de pantalla, no como parte del bloque central. */
+  .academic-credit--welcome {
+    width: 100% !important;
+    margin-top: auto !important;
+    padding: clamp(54px, 8vh, 92px) 4px 0 !important;
+    text-align: center !important;
+  }
+
+  .home-credit__group {
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .home-credit__group + .home-credit__group {
+    margin-top: 6px !important;
+    border-left: 0 !important;
+  }
+}
+
+/* En teléfonos muy angostos conservamos el mismo reparto, con un lockup un poco menor. */
+@media (max-width: 460px) and (orientation: portrait) {
+  .welcome__content {
+    width: min(84vw, 390px) !important;
+    padding-top: max(70px, calc(env(safe-area-inset-top) + 56px)) !important;
+  }
+
+  .welcome__title {
+    width: min(74vw, 330px) !important;
+  }
+
+  .academic-credit--welcome {
+    margin-top: auto !important;
+    padding-top: clamp(48px, 7vh, 78px) !important;
+  }
+}
+
+/* Si la pantalla vertical es particularmente baja, priorizamos que todo siga siendo scrolleable. */
+@media (max-width: 760px) and (orientation: portrait) and (max-height: 720px) {
+  .welcome__content {
+    min-height: auto !important;
+  }
+
+  .academic-credit--welcome {
+    margin-top: 38px !important;
+    padding-top: 0 !important;
+  }
+}
