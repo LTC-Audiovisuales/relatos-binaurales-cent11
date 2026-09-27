@@ -227,6 +227,50 @@
   }
 }
 
+/* En vertical damos más aire lateral y una escala más contenida. */
+@media (max-width: 760px) and (orientation: portrait) {
+  .welcome__content {
+    width: min(84vw, 520px) !important;
+    padding-top: max(82px, calc(env(safe-area-inset-top) + 66px));
+    padding-bottom: 38px;
+  }
+
+  .welcome__desc {
+    max-width: 90% !important;
+    margin-top: 22px !important;
+    margin-bottom: 26px !important;
+    font-size: clamp(15px, 4.2vw, 17px) !important;
+    line-height: 1.5 !important;
+  }
+
+  .headphones {
+    width: 100% !important;
+    margin-bottom: 28px !important;
+    padding: 16px 18px !important;
+    gap: 14px !important;
+  }
+
+  .headphones strong {
+    font-size: 13px !important;
+  }
+
+  .headphones span {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+  }
+
+  .enter-button {
+    width: 100% !important;
+  }
+
+  .academic-credit--welcome {
+    width: 100% !important;
+    margin-top: 50px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+}
+
 @media (max-width: 460px) {
   .welcome__content {
     padding-top: max(66px, calc(env(safe-area-inset-top) + 54px));
@@ -256,6 +300,23 @@
 
   .home-credit__subject {
     font-size: 9.5px;
+  }
+}
+
+/* Recupera el aire vertical en teléfonos angostos: prevalece sobre el bloque general de 460px. */
+@media (max-width: 460px) and (orientation: portrait) {
+  .welcome__content {
+    width: min(84vw, 390px) !important;
+    padding-top: max(78px, calc(env(safe-area-inset-top) + 62px));
+  }
+
+  .welcome__desc {
+    margin-top: 21px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .academic-credit--welcome {
+    margin-top: 46px !important;
   }
 }
 
