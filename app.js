@@ -2,6 +2,10 @@ const enhancementStyles = document.createElement("link");
 enhancementStyles.rel = "stylesheet";
 enhancementStyles.href = "exhibition-enhancements.css?v=20260926k";
 document.head.appendChild(enhancementStyles);
+const collageStyles = document.createElement("link");
+collageStyles.rel = "stylesheet";
+collageStyles.href = "home-collage.css?v=20260927a";
+document.head.appendChild(collageStyles);
 
 const relatos = [
   {
@@ -72,6 +76,7 @@ audio.volume = 1;
 let currentStory = null;
 
 function buildGallery() {
+  buildHomeCollage();
   gallery.innerHTML = relatos.map((r, i) => `
     <article class="card" tabindex="0" role="button"
       aria-label="Abrir ${escapeHTML(r.titulo)}"
@@ -103,6 +108,38 @@ function buildGallery() {
       }
     });
   });
+}
+
+function buildHomeCollage() {
+  const title = welcome.querySelector(".welcome__title");
+  if (!title) return;
+  welcome.querySelector(".home-collage")?.remove();
+  const covers = [...new Map(relatos.filter(r => r.portada).map(r => [r.portada, r])).values()].slice(0, 9);
+  welcome.classList.toggle("has-collage", covers.length > 0);
+  if (!covers.length) return;
+  const collage = document.createElement("div");
+  collage.className = "home-collage";
+  collage.setAttribute("aria-hidden", "true");
+  covers.forEach((story, index) => {
+    const card = document.createElement("div");
+    card.className = "home-collage__card";
+    card.style.setProperty("--delay", `${-index * 2}s`);
+    const img = document.createElement("img");
+    img.src = story.portada;
+    img.alt = "";
+    img.decoding = "async";
+    img.draggable = false;
+    img.addEventListener("error", () => {
+      card.remove();
+      if (!collage.childElementCount) {
+        collage.remove();
+        welcome.classList.remove("has-collage");
+      }
+    }, { once: true });
+    card.appendChild(img);
+    collage.appendChild(card);
+  });
+  title.after(collage);
 }
 
 function escapeHTML(value) {
@@ -329,3 +366,4 @@ if (requested && relatos.some(r => r.id === requested)) {
   enterExperience();
   openStory(requested);
 }
+
