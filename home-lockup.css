@@ -36,9 +36,22 @@
   }
 }
 
+/* En teléfono vertical el lockup no debe sentirse pegado a los bordes. */
+@media (max-width: 760px) and (orientation: portrait) {
+  .welcome__title {
+    width: min(80vw, 460px) !important;
+  }
+}
+
 @media (max-width: 460px) {
   .welcome__title {
     width: min(90vw, 430px) !important;
+  }
+}
+
+@media (max-width: 460px) and (orientation: portrait) {
+  .welcome__title {
+    width: min(80vw, 360px) !important;
   }
 }
 
