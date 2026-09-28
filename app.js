@@ -8,6 +8,16 @@ collageStyles.href = "home-collage.css?v=20260927a";
 document.head.appendChild(collageStyles);
 
 const relatos = [
+   {
+    id: "te-encontre",
+    titulo: "Te encontré",
+    autor: "Sabina Aylen Diaz",
+    año: "2026",
+    portada: "assets/portadas/te-encontre.webp",
+    audio: "assets/audio/te-encontre.mp3",
+    duracion: "05:12",
+    sinopsis: "Despertar en una jaula rodeada de horrores es solo el comienzo de la pesadilla de Sofía. Cuando su sádico captor ejecuta a la persona de la celda de al lado, ella sabe que su tiempo se agota. Sofía emprende una desesperada y aterradora huida por el bosque, solo para descubrir que despertar de su pesadilla es el verdadero infierno."
+  },
   {
     id: "sos-zom",
     titulo: "S.O.S Zom…",
