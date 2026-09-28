@@ -1,5 +1,5 @@
 (() => {
-  const css=document.createElement('link');css.rel='stylesheet';css.href='design-refinement.css?v=20260928-release';document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='design-refinement.css?v=20260928-mobile';document.head.append(css);
   const top=document.createElement('button');top.id='backToTop';top.type='button';top.textContent='↑';top.setAttribute('aria-label','Volver arriba');top.title='Volver arriba';top.hidden=true;document.body.append(top);
   const home=document.getElementById('welcome');
   home.append(home.querySelector('.academic-credit--welcome'));
@@ -39,3 +39,12 @@
   new MutationObserver(sync).observe(document.getElementById('storyView'), {attributes:true,attributeFilter:['hidden']});
   sync();
 })();
+/* Passive touch feedback: does not intercept scrolling, controls or audio. */
+document.addEventListener('pointerdown', event => {
+  if(event.pointerType !== 'touch' || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const glow=document.createElement('span');
+  glow.className='touch-glow';glow.setAttribute('aria-hidden','true');
+  glow.style.left=event.clientX+'px';glow.style.top=event.clientY+'px';
+  document.body.append(glow);
+  setTimeout(()=>glow.remove(),700);
+}, {passive:true});
