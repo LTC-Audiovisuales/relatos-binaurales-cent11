@@ -99,11 +99,14 @@
   <footer class="footer footer--compact unified-footer internal-footer"><div class="footer__center footer__center--compact"><div class="footer__line footer__line--primary"><span class="footer__intro">Trabajos realizados en el marco de la materia</span><strong>Producción de Sonido y Música III</strong></div><div class="footer__line footer__line--secondary"><span>Profesor - Luciano Tambella Caruso</span><span>Tecnicatura Superior en Diseño, Imagen y Sonido - CENT N.º 11</span></div></div></footer>
   </main>
 
-  <script src="app.js?v=20260928-shuffle"></script>
-  <script src="feedback.js?v=20260928-release"></script>
-  <script src="feedback-live.js?v=20260926b"></script>
-  <script src="sonic-hover.js?v=20260926g"></script>
-  <script src="design-refinement.js?v=20260928-mobile"></script>
+  <script>
+  (function(){
+    var modern=false;
+    try{new Function('var a={}; return a?.b');modern=window.CSS&&CSS.supports('width','min(10px, 20px)');}catch(e){}
+    if(!modern)document.documentElement.className+=' legacy-tablet';
+    var files=modern?['app.js?v=20260928-shuffle','feedback.js?v=20260928-release','feedback-live.js?v=20260926b','sonic-hover.js?v=20260926g','design-refinement.js?v=20260928-mobile']:['legacy-app.js?v=20260928-exo'];
+    for(var i=0;i<files.length;i++)document.write('<script src="'+files[i]+'"><\/script>');
+  })();
+  </script>
 </body>
 </html>
-
