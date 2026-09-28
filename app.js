@@ -18,6 +18,16 @@ const relatos = [
     duracion: "05:12",
     sinopsis: "Despertar en una jaula rodeada de horrores es solo el comienzo de la pesadilla de Sofía. Cuando su sádico captor ejecuta a la persona de la celda de al lado, ella sabe que su tiempo se agota. Sofía emprende una desesperada y aterradora huida por el bosque, solo para descubrir que despertar de su pesadilla es el verdadero infierno."
   },
+   {
+  id: "la-busqueda",
+  titulo: "La búsqueda",
+  autor: "Matías Maddonni",
+  año: "2026",
+  portada: "assets/portadas/la-busqueda.webp",
+  audio: "assets/audio/la-busqueda.mp3",
+  duracion: "14:20",
+  sinopsis: "Atrapado en una racha de mala suerte que desafía la razón, Neythan busca respuestas sin tener éxito. Con la ayuda de Velo, su terapeuta, y a través de una herramienta no convencional, se adentrará en las sombras de su memoria. Allí donde los recuerdos abruman, la verdad espera ser encontrada."
+},
   {
     id: "sos-zom",
     titulo: "S.O.S Zom…",
