@@ -27,14 +27,12 @@
     <div class="welcome__glow"></div>
     <div class="welcome__content">
       <h1 class="welcome__title" aria-label="Relatos Binaurales">
-        <img class="welcome__lockup" src="assets/branding/relatos-binaurales-lockup.svg" alt="Relatos Binaurales">
+        <img class="welcome__lockup" src="assets/branding/relatos-estudiante.svg" alt="Relatos Binaurales">
       </h1>
-      <p class="welcome__desc">Ponete los auriculares. La historia sucede alrededor tuyo.</p>
+      <p class="welcome__desc">La historia sucede <em>a tu alrededor</em></p>
 
       <div class="headphones">
-        <div class="headphones__icon" aria-hidden="true">
-          <span class="ear ear--left"></span><span class="band"></span><span class="ear ear--right"></span>
-        </div>
+        <img class="headphones__student-icon" src="assets/branding/auriculares-estudiante.svg" alt="" aria-hidden="true">
         <div>
           <strong>Usá auriculares</strong>
           <span>La espacialización binaural está diseñada para escucha estéreo con auriculares.</span>
@@ -43,16 +41,7 @@
 
       <button class="enter-button" id="enterButton"><span>ENTRAR A LA MUESTRA</span><span class="enter-button__arrow">→</span></button>
 
-      <div class="academic-credit academic-credit--welcome">
-        <div class="home-credit__group">
-          <div class="home-credit__label">Trabajos producidos en el marco de la materia</div>
-          <div class="home-credit__subject">Producción de Sonido y Música III</div>
-        </div>
-        <div class="home-credit__group">
-          <div class="home-credit__meta">Profesor · Luciano Tambella Caruso</div>
-          <div class="home-credit__meta">Tecnicatura Superior en Diseño, Imagen y Sonido · CENT N.º 11</div>
-        </div>
-      </div>
+<footer class="footer footer--compact unified-footer academic-credit--welcome"><div class="footer__center footer__center--compact"><div class="footer__line footer__line--primary"><span class="footer__intro">Trabajos realizados en el marco de la materia</span><strong>Producción de Sonido y Música III</strong></div><div class="footer__line footer__line--secondary"><span>Profesor - Luciano Tambella Caruso</span><span>Tecnicatura Superior en Diseño, Imagen y Sonido - CENT N.º 11</span></div></div></footer>
     </div>
   </section>
 
@@ -62,7 +51,7 @@
         <span class="brand__mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" role="presentation"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.1a.9.9 0 0 1-.9.9h-5.2v-6.1H9.6v6.1H4.4a.9.9 0 0 1-.9-.9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
         </span>
-        <span class="brand__academic"><strong>RELATOS BINAURALES</strong><small>Producción de Sonido y Música III</small></span>
+        <span class="brand__academic"><img class="brand__lockup" src="assets/branding/relatos-horizontal.svg" alt="Relatos Binaurales"></span>
       </button>
       <div class="topbar__right">
         <div class="active-author" id="activeAuthor" hidden></div>
@@ -72,20 +61,14 @@
 
     <section class="gallery-view" id="galleryView">
       <div class="hero">
-        <p class="eyebrow">TRABAJOS PRODUCIDOS EN EL MARCO DE PRODUCCIÓN DE SONIDO Y MÚSICA III</p>
+        <p class="eyebrow">TRABAJOS REALIZADOS EN EL MARCO DE PRODUCCIÓN DE SONIDO Y MÚSICA III</p>
         <h2>Elegí una historia.<br><span>Cerrá los ojos. Escuchá.</span></h2>
         <p>Cada relato propone un recorrido narrativo construido mediante voz, ambientes, diseño sonoro y espacialización binaural.</p>
       </div>
 
       <div class="gallery" id="gallery"></div>
 
-      <footer class="footer footer--compact">
-        <div class="footer__center footer__center--compact">
-          <div class="footer__line footer__line--primary">Trabajos producidos en el marco de la materia · <strong>Producción de Sonido y Música III</strong></div>
-          <div class="footer__line footer__line--secondary">Tecnicatura Superior en Diseño, Imagen y Sonido · Profesor Luciano Tambella Caruso</div>
-        </div>
-        <div class="footer__logo footer__logo--bottom"><img src="assets/logos/cent11.png" alt="CENT N.º 11 Ciudad de Ushuaia"></div>
-      </footer>
+<footer class="footer footer--compact unified-footer"><div class="footer__center footer__center--compact"><div class="footer__line footer__line--primary"><span class="footer__intro">Trabajos realizados en el marco de la materia</span><strong>Producción de Sonido y Música III</strong></div><div class="footer__line footer__line--secondary"><span>Profesor - Luciano Tambella Caruso</span><span>Tecnicatura Superior en Diseño, Imagen y Sonido - CENT N.º 11</span></div></div></footer>
     </section>
 
     <section class="story-view" id="storyView" hidden>
@@ -101,23 +84,26 @@
           <p class="story-author"><span>AUTOR/A</span> <strong id="storyAuthor"></strong></p>
           <div class="story-divider"></div>
           <p class="story-synopsis" id="storySynopsis"></p>
+        </article>
           <div class="player" id="player">
-            <button class="play-button" id="playButton" aria-label="Reproducir"><span class="play-icon" id="playIcon">▶</span><span class="pulse pulse--1"></span><span class="pulse pulse--2"></span></button>
+            <button class="play-button" id="playButton" aria-label="Reproducir"><span class="play-icon" id="playIcon"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path class="transport-play" d="M7 4.5 20 12 7 19.5Z" fill="currentColor"/><g class="transport-pause" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></g></svg></span><span class="pulse pulse--1"></span><span class="pulse pulse--2"></span></button>
             <div class="player__main">
               <div class="player__labels"><span id="currentTime">00:00</span><span class="player__status" id="playerStatus">LISTO PARA ESCUCHAR</span><span id="duration">00:00</span></div>
               <input id="seek" class="seek" type="range" min="0" max="1000" value="0" aria-label="Posición del audio">
             </div>
           </div>
           <audio id="audio" preload="metadata"></audio>
-        </article>
+
       </div>
     </section>
+  <footer class="footer footer--compact unified-footer internal-footer"><div class="footer__center footer__center--compact"><div class="footer__line footer__line--primary"><span class="footer__intro">Trabajos realizados en el marco de la materia</span><strong>Producción de Sonido y Música III</strong></div><div class="footer__line footer__line--secondary"><span>Profesor - Luciano Tambella Caruso</span><span>Tecnicatura Superior en Diseño, Imagen y Sonido - CENT N.º 11</span></div></div></footer>
   </main>
 
-  <script src="app.js?v=20260927a"></script>
-  <script src="feedback.js?v=20260926b"></script>
+  <script src="app.js?v=20260928-release"></script>
+  <script src="feedback.js?v=20260928-release"></script>
   <script src="feedback-live.js?v=20260926b"></script>
   <script src="sonic-hover.js?v=20260926g"></script>
+  <script src="design-refinement.js?v=20260928-release"></script>
 </body>
 </html>
 

@@ -68,7 +68,7 @@
   feedbackView.className = "feedback-view";
   feedbackView.id = "feedbackView";
   feedbackView.hidden = true;
-  site.appendChild(feedbackView);
+  site.insertBefore(feedbackView, site.querySelector(".internal-footer"));
 
   function updateCount() {
     const count = document.getElementById("feedbackCount");

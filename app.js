@@ -15,7 +15,7 @@ const relatos = [
     portada: "assets/portadas/sos-zom.webp",
     audio: "assets/audio/sos-zom.mp3",
     duracion: "02:42",
-    sinopsis: "Te encuentras solo en una cabaña en el bosque, pero un llamado de auxilio te hace salir de aquel lugar, ya que lo pudo haber realizado algún conocido tuyo. El único dilema aquí es… ¿Podrás llegar a tiempo? ¿Con vida? ¿En medio de un apocalipsis zombie?"
+    sinopsis: "Te encuentras solo en una cabaña en el bosque, pero un llamado de auxilio te hace salir de aquel lugar, ya que lo pudo haber realizado algún conocido tuyo. El único dilema aquí es… ¿Podrás llegar a tiempo? ¿Con vida? ¿En medio de un apocalipsis zombi?"
   },
   {
     id: "despegue-turbulento",
@@ -38,11 +38,11 @@ const relatos = [
   {
     id: "no-huyas",
     titulo: "No huyas",
-    autor: "Autor/a a completar",
+    autor: "John Ugarte",
     portada: "assets/portadas/no-huyas.webp",
     audio: "assets/audio/no-huyas.mp3",
     duracion: "02:48",
-    sinopsis: "¿Puedes intentar huir de tus recuerdos? Eres una persona que llega a casa, pone el agua a hervir y quieres ver tu película favorita, pero… ¿Qué pasa? Alguien apaga el agua, se acerca y oyes una voz conocida. ¿Podrás recordar quién es y qué quiere?"
+    sinopsis: "¿Puedes intentar huir de tus recuerdos? Eres una persona que llega a casa, pone el agua a hervir y quieres ver tu película favorita, pero… ¿qué pasa? Alguien apaga el agua, se acerca y oyes una voz conocida. ¿Podrás recordar quién es y qué quiere?"
   }
 ];
 
@@ -236,7 +236,7 @@ function stopAudio() {
 
 function updatePlayState(isPlaying) {
   playButton.classList.toggle("is-playing", isPlaying);
-  playIcon.textContent = isPlaying ? "Ⅱ" : "▶";
+  playButton.setAttribute("aria-pressed", String(isPlaying));
   playButton.setAttribute("aria-label", isPlaying ? "Pausar" : "Reproducir");
   playerStatus.textContent = isPlaying ? "REPRODUCIENDO" : "EN PAUSA";
 }
