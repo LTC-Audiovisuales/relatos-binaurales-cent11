@@ -76,8 +76,12 @@ audio.volume = 1;
 let currentStory = null;
 
 function buildGallery() {
-  buildHomeCollage();
-  gallery.innerHTML = relatos.map((r, i) => `
+  const shuffled = [...relatos];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  gallery.innerHTML = shuffled.map((r, i) => `
     <article class="card" tabindex="0" role="button"
       aria-label="Abrir ${escapeHTML(r.titulo)}"
       data-id="${r.id}">
@@ -158,6 +162,7 @@ function playAmbientVideo() {
 }
 
 function enterExperience() {
+  buildGallery();
   document.body.classList.remove("is-welcome");
   welcome.classList.add("is-hidden");
   site.removeAttribute("aria-hidden");
@@ -208,6 +213,7 @@ function openStory(id) {
 }
 
 function showGallery() {
+  buildGallery();
   stopAudio();
   storyView.hidden = true;
   galleryView.hidden = false;
@@ -357,7 +363,7 @@ function installExhibitionUI() {
 document.addEventListener("fullscreenchange", updateFullscreenButtons);
 document.addEventListener("webkitfullscreenchange", updateFullscreenButtons);
 
-buildGallery();
+buildHomeCollage();
 installExhibitionUI();
 playAmbientVideo();
 
