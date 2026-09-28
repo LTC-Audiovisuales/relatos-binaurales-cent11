@@ -19,6 +19,16 @@ const relatos = [
     sinopsis: "Despertar en una jaula rodeada de horrores es solo el comienzo de la pesadilla de Sofía. Cuando su sádico captor ejecuta a la persona de la celda de al lado, ella sabe que su tiempo se agota. Sofía emprende una desesperada y aterradora huida por el bosque, solo para descubrir que despertar de su pesadilla es el verdadero infierno."
   },
    {
+  id: "vuelo-ar703",
+  titulo: "Vuelo AR703",
+  autor: "Paula Janco",
+  año: "2026",
+  portada: "assets/portadas/vuelo-ar703.webp",
+  audio: "assets/audio/vuelo-ar703.mp3",
+  duracion: "05:33",
+  sinopsis: "¿Has subido a un avión antes? Seguro sabés lo que es que viajar se vuelva pesado, o que te toque alguien molesto al lado. Pero imagínate vivir eso mientras intentas controlar un pánico paralizante a los accidentes aéreos. Te subiste a este avión solo porque era urgente, rogando que el tiempo pase rápido. El vuelo se prepara para despegar, hasta que asciende y el verdadero problema empieza. Tu compañera de asiento ya te lo había avisado desde el inicio. Este viaje no va a ser nada agradable."
+   },
+   {
   id: "la-busqueda",
   titulo: "La búsqueda",
   autor: "Matías Maddonni",
