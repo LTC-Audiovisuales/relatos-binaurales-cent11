@@ -138,7 +138,7 @@ function buildHomeCollage() {
   const title = welcome.querySelector(".welcome__title");
   if (!title) return;
   welcome.querySelector(".home-collage")?.remove();
-  const covers = [...new Map(relatos.filter(r => r.portada).map(r => [r.portada, r])).values()].slice(0, 9);
+  const covers = [...new Map(   relatos.filter(r => r.portada).map(r => [r.portada, r]) ).values()];  covers.sort(() => Math.random() - 0.5); covers.splice(9);
   welcome.classList.toggle("has-collage", covers.length > 0);
   if (!covers.length) return;
   const collage = document.createElement("div");
