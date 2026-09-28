@@ -101,7 +101,7 @@ function buildGallery() {
         <span class="card__duration">${r.duracion}</span>
       </div>
       <div class="card__body">
-        <p class="card__meta">Relato binaural</p>
+        <p class="card__meta">Relato binaural${r.año ? ` · ${r.año}` : ""}</p>
         <h3>${escapeHTML(r.titulo)}</h3>
         <p class="card__author">${escapeHTML(r.autor)}</p>
         <p class="card__synopsis">${escapeHTML(r.sinopsis)}</p>
