@@ -19,6 +19,16 @@ const relatos = [
     sinopsis: "Despertar en una jaula rodeada de horrores es solo el comienzo de la pesadilla de Sofía. Cuando su sádico captor ejecuta a la persona de la celda de al lado, ella sabe que su tiempo se agota. Sofía emprende una desesperada y aterradora huida por el bosque, solo para descubrir que despertar de su pesadilla es el verdadero infierno."
   },
    {
+  id: "paseo-temporal",
+  titulo: "Paseo Temporal",
+  autor: "Antonela Demartin",
+  año: "2026",
+  portada: "assets/portadas/paseo-temporal.webp",
+  audio: "assets/audio/paseo-temporal.mp3",
+  duracion: "06:19",
+  sinopsis: "Un paseo cotidiano de una chica y sus dos perros se convierte en un momento de búsqueda y reflexión sobre la vida y el tiempo, tras el encuentro con un ser del bosque."
+   },
+   {
   id: "vuelo-ar703",
   titulo: "Vuelo AR703",
   autor: "Paula Janco",
