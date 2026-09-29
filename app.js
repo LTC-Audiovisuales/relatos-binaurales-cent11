@@ -19,6 +19,16 @@ const relatos = [
     sinopsis: "Despertar en una jaula rodeada de horrores es solo el comienzo de la pesadilla de Sofía. Cuando su sádico captor ejecuta a la persona de la celda de al lado, ella sabe que su tiempo se agota. Sofía emprende una desesperada y aterradora huida por el bosque, solo para descubrir que despertar de su pesadilla es el verdadero infierno."
   },
    {
+  id: "aqui-alla-y-el-lugar-en-el-que-deseo-estar",
+  titulo: "Aquí, allá y el lugar en el que deseo estar",
+  autor: "Karina Besacho",
+  año: "2026",
+  portada: "assets/portadas/aqui-alla-y-el-lugar-en-el-que-deseo-estar.webp",
+  audio: "assets/audio/aqui-alla-y-el-lugar-en-el-que-deseo-estar.mp3",
+  duracion: "05:20",
+  sinopsis: "Ulises emprende una travesía hacia la cumbre junto a sus amigos, pero una avalancha cambia su destino para siempre. Entre recuerdos, pérdidas y la voz persistente de su madre, descubre que el verdadero lugar al que debía llegar no era la montaña, sino un espacio íntimo de entendimiento y gratitud por la vida."
+   },
+   {
   id: "paseo-temporal",
   titulo: "Paseo Temporal",
   autor: "Antonela Demartin",
@@ -47,7 +57,7 @@ const relatos = [
   audio: "assets/audio/la-busqueda.mp3",
   duracion: "14:20",
   sinopsis: "Atrapado en una racha de mala suerte que desafía la razón, Neythan busca respuestas sin tener éxito. Con la ayuda de Velo, su terapeuta, y a través de una herramienta no convencional, se adentrará en las sombras de su memoria. Allí donde los recuerdos abruman, la verdad espera ser encontrada."
-},
+   },
   {
     id: "sos-zom",
     titulo: "S.O.S Zom…",
