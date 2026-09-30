@@ -22,6 +22,8 @@ const relatos = [
   id: "una-mesa-de-tres-patas",
   titulo: "Una mesa de tres patas",
   autor: "Ignacio Ibires",
+  credito: "REALIZACIÓN",
+  adaptacion: "“Una mesa de tres patas”, de Roberto Fontanarrosa",
   año: "2026",
   portada: "assets/portadas/una-mesa-de-tres-patas.webp",
   audio: "assets/audio/una-mesa-de-tres-patas.mp3",
@@ -153,7 +155,7 @@ function buildGallery() {
       <div class="card__body">
         <p class="card__meta">Relato binaural${r.año ? ` · ${r.año}` : ""}</p>
         <h3>${escapeHTML(r.titulo)}</h3>
-        <p class="card__author">${escapeHTML(r.autor)}</p>
+        <p class="card__author"${r.credito ? ` data-credito="${escapeHTML(r.credito)}"` : ""}>${escapeHTML(r.autor)}</p>
         <p class="card__synopsis">${escapeHTML(r.sinopsis)}</p>
         <div class="card__action">
           <span>ABRIR EXPERIENCIA</span>
@@ -247,6 +249,26 @@ function showWelcome() {
   window.scrollTo({ top: 0 });
 }
 
+function updateStoryCredit(story) {
+  storyAuthor.parentNode.querySelector("span").textContent = story.credito || "AUTOR/A";
+  const previousAdaptation = document.getElementById("storyAdaptation");
+  if (previousAdaptation) previousAdaptation.remove();
+  if (story.adaptacion) {
+    const adaptation = document.createElement("p");
+    adaptation.id = "storyAdaptation";
+    adaptation.className = "story-author";
+    const label = document.createElement("span");
+    label.textContent = "ADAPTACIÓN DE";
+    const source = document.createElement("strong");
+    source.textContent = story.adaptacion;
+    adaptation.appendChild(label);
+    adaptation.appendChild(source);
+    storyAuthor.parentNode.after(adaptation);
+  }
+  if (story.credito) activeAuthor.setAttribute("data-credito", story.credito);
+  else activeAuthor.removeAttribute("data-credito");
+}
+
 function openStory(id) {
   const story = relatos.find(r => r.id === id);
   if (!story) return;
@@ -259,6 +281,7 @@ function openStory(id) {
   storyCover.alt = `Portada de ${story.titulo}`;
   storyTitle.textContent = story.titulo;
   storyAuthor.textContent = story.autor;
+  updateStoryCredit(story);
   storySynopsis.textContent = story.sinopsis;
   activeAuthor.textContent = story.autor;
   activeAuthor.hidden = false;

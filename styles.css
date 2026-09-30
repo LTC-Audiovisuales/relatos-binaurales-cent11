@@ -1547,3 +1547,9 @@ body {
       rgba(255,255,255,.13) var(--volume-progress, 85%),
       rgba(255,255,255,.13) 100%);
 }
+
+/* Optional credit label for adaptations. */
+.card__author[data-credito]::before,
+.active-author[data-credito]::before {
+  content: attr(data-credito) " · ";
+}
