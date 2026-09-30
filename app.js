@@ -19,6 +19,16 @@ const relatos = [
     sinopsis: "Despertar en una jaula rodeada de horrores es solo el comienzo de la pesadilla de Sofía. Cuando su sádico captor ejecuta a la persona de la celda de al lado, ella sabe que su tiempo se agota. Sofía emprende una desesperada y aterradora huida por el bosque, solo para descubrir que despertar de su pesadilla es el verdadero infierno."
   },
    {
+  id: "una-mesa-de-tres-patas",
+  titulo: "Una mesa de tres patas",
+  autor: "Ignacio Ibires",
+  año: "2026",
+  portada: "assets/portadas/una-mesa-de-tres-patas.webp",
+  audio: "assets/audio/una-mesa-de-tres-patas.mp3",
+  duracion: "10:01",
+  sinopsis: "En un caluroso y pesado verano, una viuda, una vidente y el reclamo de un muerto a su familia nos sumergen en esta curiosa historia que quedará para la anécdota en algún lugar de Rosario."
+   },
+   {
   id: "aqui-alla-y-el-lugar-en-el-que-deseo-estar",
   titulo: "Aquí, allá y el lugar en el que deseo estar",
   autor: "Karina Besacho",
