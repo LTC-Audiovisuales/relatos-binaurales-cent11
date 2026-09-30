@@ -250,7 +250,13 @@ function showWelcome() {
 }
 
 function updateStoryCredit(story) {
-  storyAuthor.parentNode.querySelector("span").textContent = story.credito || "AUTOR/A";
+  const creditLabel = storyAuthor.parentNode.querySelector("span");
+  creditLabel.textContent = story.credito || "AUTOR/A";
+  creditLabel.style.fontWeight = story.credito ? "700" : "";
+  creditLabel.style.color = story.credito ? "#d9dee1" : "";
+  storyAuthor.style.fontWeight = story.credito ? "400" : "";
+  if (!creditLabel.getAttribute("style")) creditLabel.removeAttribute("style");
+  if (!storyAuthor.getAttribute("style")) storyAuthor.removeAttribute("style");
   const previousAdaptation = document.getElementById("storyAdaptation");
   if (previousAdaptation) previousAdaptation.remove();
   if (story.adaptacion) {
@@ -259,8 +265,11 @@ function updateStoryCredit(story) {
     adaptation.className = "story-author";
     const label = document.createElement("span");
     label.textContent = "ADAPTACIÓN DE";
+    label.style.fontWeight = "700";
+    label.style.color = "#d9dee1";
     const source = document.createElement("strong");
     source.textContent = story.adaptacion;
+    source.style.fontWeight = "400";
     adaptation.appendChild(label);
     adaptation.appendChild(source);
     storyAuthor.parentNode.after(adaptation);
